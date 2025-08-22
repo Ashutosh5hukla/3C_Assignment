@@ -1,0 +1,25 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class c5_2sum {
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int val) { this.val = val; }
+    }
+
+    class Solution {
+        public boolean findTarget(TreeNode root, int k) {
+            Set<Integer> set=new HashSet<>();
+            return twoSum(root,k,set);
+        }
+        public boolean twoSum(TreeNode root,int k,Set<Integer> set){
+            if(root==null) return false;
+            if(set.contains(k-root.val)) return true;
+            set.add(root.val);
+            return twoSum(root.left,k,set) || twoSum(root.right,k,set);
+        }
+    }
+}
